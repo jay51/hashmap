@@ -1,8 +1,8 @@
 
 #gcc -I../src/ main.c ../src/map.c 
 
-FLAGS = -I../src/
-
+INCLUDE = -I../src/
+FLAGS = -g -Wall
 SRCDIR = ../
 OBJECTS := $(shell find  $(SRCDIR) -name "*.c")
 
@@ -13,7 +13,7 @@ OBJECTS := $(shell find  $(SRCDIR) -name "*.c")
 
 
 test: $(OBJECTS) 
-	gcc $(FLAGS) $(OBJECTS) -o  test
+	gcc $(INCLUDE) $(FLAGS) $(OBJECTS) -o  test
 	
 	
 clean:
