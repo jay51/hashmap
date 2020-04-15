@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "map.h"
 
 struct map_node_t {
@@ -17,6 +18,11 @@ static unsigned map_hash(const char *str) {
     hash = ((hash << 5) + hash) ^ *str++;
   }
   return hash;
+}
+
+
+unsigned map_size_(map_base_t *m) {
+    return m->nnodes;
 }
 
 

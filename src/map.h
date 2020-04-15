@@ -39,6 +39,8 @@ typedef struct {
   ( (m)->tmp = (value),\
     map_set_(&(m)->base, key, &(m)->tmp, sizeof((m)->tmp)) )
 
+#define map_size(m)\
+  map_size_(&(m)->base)
 
 #define map_remove(m, key)\
   map_remove_(&(m)->base, key)
@@ -58,6 +60,7 @@ int map_set_(map_base_t *m, const char *key, void *value, int vsize);
 void map_remove_(map_base_t *m, const char *key);
 map_iter_t map_iter_(void);
 const char *map_next_(map_base_t *m, map_iter_t *iter);
+unsigned map_size_(map_base_t *m);
 
 
 typedef map_t(void*) map_void_t;
