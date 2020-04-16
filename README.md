@@ -87,6 +87,9 @@ Sets the given `key` to the given `value`. Returns `0` on success, otherwise
 Removes the mapping of the given `key` from the map. If the `key` does not
 exist in the map then the function has no effect.
 
+### map\_size(m)
+return the size of map. 
+
 ### map\_iter(m)
 Returns a `map_iter_t` which can be used with `map_next()` to iterate all the
 keys in the map.
