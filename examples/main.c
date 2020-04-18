@@ -10,12 +10,15 @@ void test_with_many_values(int n);
 void test_remove();
 void test_replace();
 void test_adding();
+void test_allocation();
 
 int main(){
-    test_with_many_values(10);
-    test_remove();
-    test_replace();
-    test_adding();
+    test_allocation();
+    // test_with_many_values(10);
+    // test_remove();
+    // test_replace();
+    // test_adding();
+
 
 }
 
@@ -132,4 +135,16 @@ void test_with_many_values(int n){
     printf("nbuckets: %d\n", hashmap.base.nbuckets); // power of 2 buckets to hold nodes
     printf("size %d\n", map_size(&hashmap));
     map_deinit(&hashmap);
+}
+
+void test_allocation(){
+    map_int_t hashmap;
+    map_init(&hashmap);
+
+    char* key = "Ea";
+
+    if((map_set(&hashmap, key, 1)) == -1)
+        printf("ALLOCATION FAILD\n");
+    else
+        printf("key is %d, AND SHOULD BE 1\n", *map_get(&hashmap, key));
 }
