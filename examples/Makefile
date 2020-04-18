@@ -4,8 +4,8 @@ SRCDIR = ../
 OBJECTS := $(shell find  $(SRCDIR) -name "*.c")
 
 
-test: $(OBJECTS) 
-	gcc $(INCLUDE) $(FLAGS) $(OBJECTS) -o  test
+test: $(OBJECTS)
+	gcc $(INCLUDE) $(FLAGS) $(OBJECTS) -o  test && bash -c "./test"
 	
 	
 clean:
