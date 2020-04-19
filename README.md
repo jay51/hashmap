@@ -90,6 +90,9 @@ exist in the map then the function has no effect.
 ### map\_size(m)
 return the size of map. 
 
+### map\_isempty(m)
+return 1 if empty else 0
+
 ### map\_iter(m)
 Returns a `map_iter_t` which can be used with `map_next()` to iterate all the
 keys in the map.

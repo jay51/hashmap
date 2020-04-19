@@ -25,6 +25,11 @@ unsigned map_size_(map_base_t *m) {
 }
 
 
+unsigned map_isempty_(map_base_t *m) {
+    return m->nnodes == 0;
+}
+
+
 static map_node_t *map_newnode(const char *key, void *value, int vsize) {
   map_node_t *node;
   int ksize = strlen(key) + 1;

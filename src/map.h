@@ -42,6 +42,9 @@ typedef struct {
 #define map_size(m)\
   map_size_(&(m)->base)
 
+#define map_isempty(m)\
+  map_isempty_(&(m)->base)
+
 #define map_remove(m, key)\
   map_remove_(&(m)->base, key)
 
@@ -61,6 +64,7 @@ void map_remove_(map_base_t *m, const char *key);
 map_iter_t map_iter_(void);
 const char *map_next_(map_base_t *m, map_iter_t *iter);
 unsigned map_size_(map_base_t *m);
+unsigned map_isempty_(map_base_t *m);
 
 
 typedef map_t(void*) map_void_t;

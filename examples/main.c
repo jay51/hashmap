@@ -11,9 +11,12 @@ void test_remove();
 void test_replace();
 void test_adding();
 void test_allocation();
+void test_isempty();
 
 int main(){
-    test_allocation();
+
+    test_isempty();
+    // test_allocation();
     // test_with_many_values(10);
     // test_remove();
     // test_replace();
@@ -22,6 +25,24 @@ int main(){
 
 }
 
+
+void test_isempty(){
+    map_int_t hashmap;
+    map_init(&hashmap);
+
+    if(map_isempty(&hashmap))
+        printf("it's empty\n");
+    else
+        printf("it's NOT empty\n");
+
+    printf("Adding a key\n");
+    map_set(&hashmap, "somthing", 1);
+
+    if(map_isempty(&hashmap))
+        printf("it's empty\n");
+    else
+        printf("it's NOT empty\n");
+}
 
 void test_adding(){
     map_int_t hashmap;
