@@ -52,6 +52,7 @@ static int map_bucketidx(map_base_t *m, unsigned hash) {
 
 
 static void map_addnode(map_base_t *m, map_node_t *node) {
+  // get the bucket index and add node at index
   int n = map_bucketidx(m, node->hash);
   node->next = m->buckets[n];
   m->buckets[n] = node;
@@ -99,7 +100,9 @@ static map_node_t **map_getref(map_base_t *m, const char *key) {
   unsigned hash = map_hash(key);
   map_node_t **next;
   if (m->nbuckets > 0) {
+    // return the index of bucket
     next = &m->buckets[map_bucketidx(m, hash)];
+    // while there's a node in the bucket check for our node
     while (*next) {
       if ((*next)->hash == hash && !strcmp((char*) (*next + 1), key)) {
         return next;
@@ -146,7 +149,7 @@ int map_set_(map_base_t *m, const char *key, void *value, int vsize) {
   node = map_newnode(key, value, vsize);
   if (node == NULL) goto fail;
   if (m->nnodes >= m->nbuckets) {
-    n = (m->nbuckets > 0) ? (m->nbuckets << 1) : 1;
+    n = (m->nbuckets > 0) ? (m->nbuckets << 1) : 1; // if nbuckets > 0 multiply by 2 else set it to 1
     err = map_resize(m, n);
     if (err) goto fail;
   }
